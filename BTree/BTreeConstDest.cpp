@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   BTreeInsertLeaf.cpp                                                      */
+/*   BTreeCreateLeaf.cpp                                                      */
 /*                                                                            */
 /*   By: Kristina Oliinyk <0lejnikristina@gmail.                              */
 /*                                                                            */
@@ -12,33 +12,44 @@
 
 #include "../BTree.hpp"
 
-void	BTree::insert_leaf(t_btree *root, t_file_cab *data)
+BTree::t_file_cab*		BTree::add_file_cab_data()
 {
-	t_btree			*buff_leaf;
-	int				room1;
-	int				room2;
+	t_file_cab *data;
 
-	room1 = root->data->room_n;
-	room2 = data->room_n;
-	if (room2 > room1 && root->right && printf("Go right\n"))
-		insert_leaf(root->right, data);
-	else if (room2 < room1 && root->left && printf("Go left\n"))
-		insert_leaf(root->left, data);
-	else
-	{
-		if (room2 < room1)
-		{
-			printf("create left\n");
-			buff_leaf = root->left;
-			root->left = create_leaf(data);
-			root->left->left = buff_leaf;
-		}
-		else
-		{
-			printf("create right\n");
-			buff_leaf = root->right;
-			root->right = create_leaf(data);
-			root->right->right = buff_leaf;
-		}
-	}
+	data = new t_file_cab[1];
+	// std::cout << "Enter room number:" << '\n';
+	// std::cin >> data->room_n;
+	data->room_n = 100;
+	return (data);
+}
+
+BTree::BTree(void)
+{
+	t_file_cab	*data;
+
+	std::cout << "Constructor calld\n";
+	data = add_file_cab_data();
+	this->root = new t_btree[1];
+	this->root = create_leaf(data);
+}
+
+BTree::~BTree(void)
+{
+	delete this->root->data;
+	delete this->root;
+	std::cout << "Destructor calld\n";
+}
+
+void 	BTree::hello()
+{
+	std::cout << "Hello!!!\n";
+}
+
+int		main()
+{
+	BTree my_tree;
+
+	// std::cout << "Hello World! " << my_tree->root << '\n';
+	// my_tree->hello();
+	return(0);
 }
