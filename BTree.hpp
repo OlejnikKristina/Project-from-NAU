@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   BTree.hpp                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Kristina Oliinyk <0lejnikristina@gmail.      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2019/12/01 12:32:49 by Kristina Ol    #+#    #+#                */
-/*   Updated: 2019/12/01 12:32:49 by Kristina Ol   ########   odam.nl         */
+/*                                                                            */
+/*   BTree.hpp                                                                */
+/*                                                                            */
+/*   By: Kristina Oliinyk <0lejnikristina@gmail.                              */
+/*                                                                            */
+/*   Created: 2019/12/01 12:32:49 by Kristina Ol                              */
+/*   Updated: 2019/12/01 12:32:49 by Kristina Ol                              */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,10 @@ class				BTree
 	void			create_tree();
 	void	 		rm_tree(t_btree *root);
 	void 			print2DUtil(t_btree *root, int space);
-	void			print2D(t_btree *root)  ;
-	// void			pre_apply(t_btree *root, void (*apply_me)(int));
-	// void			rm_tree(t_btree *root);
-	// void			print_leaf_data(t_file_cab *item);
+	void			print2D(t_btree *root);
 
 /******************* Aditional functions for work with BT ***********************/
 
-	// int				nrooms_cmp(int room_n1, int room_n2);
-	// void			print_leaf_int(int item);
-	// void			*ft_memset(void *s, int c, unsigned int n);
 	// void			ft_putchar(char c);
 	private:
 	t_file_cab		*add_file_cab_data(int = 10);
