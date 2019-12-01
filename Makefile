@@ -13,7 +13,7 @@
 NAME		= my_tree
 SRC			= BTreeCreateLeaf.cpp BTreeInsertLeaf.cpp \
 			BTreeConstDest.cpp BTreeAddFileCabData.cpp \
-			BTreeRmTree.cpp
+			BTreeRmTree.cpp BTreeDisplay.cpp
 COMPILER	= g++ -g
 
 all:$(NAME)

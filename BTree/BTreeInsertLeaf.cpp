@@ -20,9 +20,9 @@ void	BTree::insert_leaf(t_btree *root, t_file_cab *data)
 
 	pre_room = root->data->room_n;
 	new_room = data->room_n;
-	if (new_room < pre_room && root->right && printf("Go right\n"))
+	if (new_room > pre_room && root->right && printf("Go right\n"))
 		insert_leaf(root->right, data);
-	else if (new_room > pre_room && root->left && printf("Go left\n"))
+	else if (new_room < pre_room && root->left && printf("Go left\n"))
 		insert_leaf(root->left, data);
 	else
 	{
@@ -51,6 +51,13 @@ void	BTree::create_tree()
 	data = add_file_cab_data();
 	//std::cout << "DATA: " << data->room_n << '\n';
 	insert_leaf(root, data);
+	data = add_file_cab_data(6);
+	insert_leaf(root, data);
+	data = add_file_cab_data(1);
+	insert_leaf(root, data);
+	data = add_file_cab_data(8);
+	insert_leaf(root, data);
+	print2D(root);
 	
 	// for (int i = 0; i < N_LEAFS; i++)
 	// {

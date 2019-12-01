@@ -27,6 +27,7 @@ class				BTree
 
 	struct t_btree	*root;
 	int				N_LEAFS;
+	int				COUNT;
 	bool			USER_INPUT;
 
 	BTree(void);
@@ -35,6 +36,8 @@ class				BTree
 	void			insert_leaf(t_btree *root, t_file_cab *data);
 	void			create_tree();
 	void	 		rm_tree(t_btree *root);
+	void 			print2DUtil(t_btree *root, int space);
+	void			print2D(t_btree *root)  ;
 	// void			pre_apply(t_btree *root, void (*apply_me)(int));
 	// void			rm_tree(t_btree *root);
 	// void			print_leaf_data(t_file_cab *item);
