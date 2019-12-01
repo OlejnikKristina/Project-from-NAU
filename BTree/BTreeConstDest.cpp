@@ -12,44 +12,23 @@
 
 #include "../BTree.hpp"
 
-BTree::t_file_cab*		BTree::add_file_cab_data()
-{
-	t_file_cab *data;
-
-	data = new t_file_cab[1];
-	// std::cout << "Enter room number:" << '\n';
-	// std::cin >> data->room_n;
-	data->room_n = 100;
-	return (data);
-}
-
 BTree::BTree(void)
 {
 	t_file_cab	*data;
 
-	std::cout << "Constructor calld\n";
+	USER_INPUT = false;
 	data = add_file_cab_data();
-	this->root = new t_btree[1];
-	this->root = create_leaf(data);
+	root = new t_btree[1];
+	root = create_leaf(data);
 }
 
 BTree::~BTree(void)
 {
-	delete this->root->data;
-	delete this->root;
-	std::cout << "Destructor calld\n";
+	// delete root->data;
+	// delete root;
+	rm_tree(root);
+	delete root->data;
+	root->data = nullptr;
+	delete root;
 }
 
-void 	BTree::hello()
-{
-	std::cout << "Hello!!!\n";
-}
-
-int		main()
-{
-	BTree my_tree;
-
-	// std::cout << "Hello World! " << my_tree->root << '\n';
-	// my_tree->hello();
-	return(0);
-}

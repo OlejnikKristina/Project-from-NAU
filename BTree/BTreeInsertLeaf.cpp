@@ -15,18 +15,18 @@
 void	BTree::insert_leaf(t_btree *root, t_file_cab *data)
 {
 	t_btree			*buff_leaf;
-	int				room1;
-	int				room2;
+	int				pre_room;
+	int				new_room;
 
-	room1 = root->data->room_n;
-	room2 = data->room_n;
-	if (room2 > room1 && root->right && printf("Go right\n"))
+	pre_room = root->data->room_n;
+	new_room = data->room_n;
+	if (new_room < pre_room && root->right && printf("Go right\n"))
 		insert_leaf(root->right, data);
-	else if (room2 < room1 && root->left && printf("Go left\n"))
+	else if (new_room > pre_room && root->left && printf("Go left\n"))
 		insert_leaf(root->left, data);
 	else
 	{
-		if (room2 < room1)
+		if (new_room < pre_room)
 		{
 			printf("create left\n");
 			buff_leaf = root->left;
@@ -41,4 +41,35 @@ void	BTree::insert_leaf(t_btree *root, t_file_cab *data)
 			root->right->right = buff_leaf;
 		}
 	}
+}
+
+void	BTree::create_tree()
+{
+	int rooms_num[7] = {6,25,1,8,20,30,21};
+	t_file_cab		*data;
+
+	data = add_file_cab_data();
+	//std::cout << "DATA: " << data->room_n << '\n';
+	insert_leaf(root, data);
+	
+	// for (int i = 0; i < N_LEAFS; i++)
+	// {
+
+	// }
+	// while ()
+	// {
+	// 	/* code */
+	// }
+}
+
+int		main()
+{
+	BTree my_tree;
+
+	std::cout << "Room Num: " \
+	<< my_tree.root->data->room_n << '\n';
+
+	my_tree.create_tree();
+	//std::cout << my_tree.root->left->data->room_n;
+	return(0);
 }
